@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons'
 
 type Props = {
   task: String
-  onRemove: () => void
+  onRemove: () => void,
 }
 
 export function Task({ task, onRemove }: Props){

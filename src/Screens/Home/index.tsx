@@ -1,24 +1,38 @@
 import React, { useState } from 'react'
-import { TextInput, Text, View, Image, TouchableOpacity, FlatList } from 'react-native'
+import { TextInput, Text, View, Image, TouchableOpacity, FlatList, Alert } from 'react-native'
 
 import { styles } from './style'
 import { Task } from '../../Components/Task'
 
-import { AntDesign, FontAwesome5 } from '@expo/vector-icons'
+import { AntDesign, FontAwesome5, } from '@expo/vector-icons'
 
 
 export function Home(){
-  const [task, setTask] = useState(['alexandre essa e a primeita trefa que esta sendo adicionada', 'testando outra tarefa'])
+  const [task, setTask] = useState<string[]>([])
   const [addNewTask, setAddNewTask] = useState('')
 
   function addTask(){
+    if(task.includes(addNewTask)){
+      setAddNewTask('')
+      return Alert.alert("Tarefa já existe", "Essa tarefa já existe, por favor digite outra tarefa!")
+    }
 
-  }
+    setTask(prevState => [...prevState, addNewTask])
+    setAddNewTask('')
+  } 
 
   function removeTask(task: string){
-    
+    Alert.alert("Remover tarefa", `Tem certeza que deseja remover a tarefa?`, [
+      {
+        text: 'Sim',
+        onPress: () => setTask(prevState => prevState.filter(participant => participant !== task))
+      },
+      {
+        text: 'Não',
+        style: 'cancel'
+      }
+    ])
   }
-
 
   return (
     <View style={styles.container}>
@@ -34,6 +48,8 @@ export function Home(){
           style={styles.input}
           placeholder="Adicione uma nova tarefa"
           placeholderTextColor="#808080"
+          onChangeText={setAddNewTask}
+          value={addNewTask}
         />
 
         <TouchableOpacity style={styles.button} onPress={addTask}>
