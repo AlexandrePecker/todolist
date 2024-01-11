@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: '#272727'
+    backgroundColor: '#1A1A1A',
   },
   logoIcon:{
     width: '100%',
@@ -13,25 +13,48 @@ export const styles = StyleSheet.create({
   },
   mainInput:{
       flexDirection: 'row',
+      alignItems: 'center',
       justifyContent: 'center',
-      gap: 4
+      gap: 4,
+      marginTop: -30
   },
   input:{
-    flex: 1,
-    backgroundColor: '#0D0D0D',
-    borderRadius: 8,
+    backgroundColor: '#262626',
+    borderRadius: 6,
     color: '#FFFFFF',
     padding: 16,
     fontSize: 16,
-    width: 327,
-    height: 54
+    width: 300,
+    height: 52,
   },
   button:{
-    width: 56,
-    height: 56,
-    borderRadius: 5,
+    width: 52,
+    height: 52,
+    borderRadius: 6,
     backgroundColor: '#1E6F9F',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  textCont:{
+    marginTop: 32,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginRight: 24,
+    marginLeft: 24
+  },
+  listEmptyText1:{
+    textAlign: 'center',
+    color: '#808080',
+    fontSize: 14,
+    marginTop: 10,
+    fontWeight: 'bold'
+  },
+  listEmptyText2:{
+    textAlign: 'center',
+    color: '#808080',
+  },
+  tasklist:{
+    textAlign: 'center',
+    marginTop: 45
   }
 })
