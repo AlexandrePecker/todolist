@@ -4,7 +4,7 @@ import { styles } from './style'
 
 import { AntDesign } from '@expo/vector-icons'
 
-type Props = {
+type Props = { // Define um tipo 
   task: String
   onRemove: () => void,
 }

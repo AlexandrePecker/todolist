@@ -11,25 +11,30 @@ export function Home(){
   const [task, setTask] = useState<string[]>([])
   const [addNewTask, setAddNewTask] = useState('')
 
+  // Função para adicionar uma nova tarefa à lista
   function addTask(){
     if(task.includes(addNewTask)){
+      // Limpa o campo de entrada e exibe um alerta informando caso a tarefa já existe
       setAddNewTask('')
       return Alert.alert("Tarefa já existe", "Essa tarefa já existe, por favor digite outra tarefa!")
     }
 
+     // Adiciona a nova tarefa à lista usando o operador spread para criar um novo array
     setTask(prevState => [...prevState, addNewTask])
     setAddNewTask('')
   } 
 
   function removeTask(task: string){
+    // Exibe um alerta de confirmação para remover a tarefa
     Alert.alert("Remover tarefa", `Tem certeza que deseja remover a tarefa?`, [
       {
         text: 'Sim',
+        // Se o usuário pressionar "Sim", executa a ação de remoção
         onPress: () => setTask(prevState => prevState.filter(participant => participant !== task))
       },
       {
         text: 'Não',
-        style: 'cancel'
+        style: 'cancel' // Define o estilo 'cancel' para o botão "Não"
       }
     ])
   }
@@ -68,7 +73,7 @@ export function Home(){
           />
         )}
         showsVerticalScrollIndicator={false}
-        ListEmptyComponent={() => (
+        ListEmptyComponent={() => ( // Enquando a lista não for carregada, exibe:
           <>
             <FontAwesome5 name="tasks" size={24} color="#808080" style={styles.tasklist}/>
             <Text style={styles.listEmptyText1}>
